@@ -2,6 +2,7 @@ package telas;
 
 import javax.swing.JOptionPane;
 import beans.Aluno;
+import conexao.Conexao;
 import dao.AlunoDao;
 
 public class TelaCadastroDeDados extends javax.swing.JFrame {
@@ -286,7 +287,7 @@ public class TelaCadastroDeDados extends javax.swing.JFrame {
             novoAluno.setNotaProva(notaProva);
             novoAluno.setMedia(media);
 
-            AlunoDao dao = new AlunoDao();
+            AlunoDao dao = new AlunoDao(new Conexao());
 
             dao.inserir(novoAluno);
 

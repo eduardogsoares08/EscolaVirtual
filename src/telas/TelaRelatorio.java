@@ -5,11 +5,12 @@ import javax.swing.table.DefaultTableModel;
 import javax.swing.table.TableRowSorter;
 import dao.AlunoDao;
 import beans.Aluno;
+import conexao.Conexao;
 
 public class TelaRelatorio extends javax.swing.JFrame {
 
     private void preencherTabela() {
-        AlunoDao dao = new AlunoDao();
+        AlunoDao dao = new AlunoDao(new Conexao());
 
         String aluno = txtBusca.getText();
 

@@ -6,23 +6,25 @@ package conexao;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.SQLException;
 
-public class Conexao {
-
-    public Connection Conexao() {
+public class Conexao implements InterfaceConexao{
+    
+   private static final String URL = "jdbc:mysql://localhost/escola_virtual";
+    private static final String usuario = "root";
+    private static final String senha = "dudu";
+    
+    
+    @Override
+    public Connection conectar() {
 
         try {
-            Connection conn = DriverManager.getConnection(
-                    "jdbc:mysql://localhost/ escola_virtual ",
-                    "root",
-                    "dudu"
-            );
-            return conn;
-
-        } catch (Exception e) {
-            System.out.println("Erro ao conectar: " + e.getMessage());
+            return DriverManager.getConnection(URL, usuario, senha);
+        } catch (SQLException e) {
+            System.out.println("Erro na conexão: " + e.getMessage());
             return null;
         }
+        
 
     }
 }

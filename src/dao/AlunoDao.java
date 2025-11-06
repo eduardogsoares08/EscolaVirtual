@@ -5,7 +5,7 @@
 package dao;
 
 import beans.Aluno;
-import conexao.Conexao;
+import conexao.InterfaceConexao;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
@@ -15,12 +15,12 @@ import java.util.List;
 
 public class AlunoDao {
 
-    private Conexao conexao;
-    private Connection conn;
+    private final InterfaceConexao conexao;
+    private final Connection conn;
 
-    public AlunoDao() {
-        this.conexao = new Conexao();
-        this.conn = this.conexao.Conexao();
+    public AlunoDao(InterfaceConexao conexao) {
+        this.conexao = conexao;
+        this.conn = conexao.conectar();
     }
 
     public void inserir(Aluno aluno) {
